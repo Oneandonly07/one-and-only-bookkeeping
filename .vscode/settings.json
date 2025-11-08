@@ -1,15 +1,16 @@
 {
-  // Turn on Deno only inside this workspace
-  "deno.enable": true,
-  "deno.unstable": true,
-  "deno.lint": true,
+  // Auto push after each commit
+  "git.postCommitCommand": "push",
 
-  // Allow URL imports from deno.land
-  "deno.suggest.imports.hosts": {
-    "https://deno.land": true
-  },
+  // Automatically fetch and prune remotes
+  "git.autofetch": true,
+  "git.autofetchPeriod": 180,
+  "git.pruneOnFetch": true,
 
-  // Tell VS Code to stop the Node TypeScript server from “helping”
-  "typescript.validate.enable": false,
-  "javascript.validate.enable": false
+  // Skip confirmation prompts when syncing
+  "git.confirmSync": false,
+
+  // Smart commits (commit directly from source control panel)
+  "git.enableSmartCommit": true,
+  "git.suggestSmartCommit": false
 }
