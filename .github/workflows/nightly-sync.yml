@@ -1,0 +1,23 @@
+name: Nightly Supabase Sync
+
+on:
+  schedule:
+    # Runs every day at 03:00 UTC
+    - cron: "0 3 * * *"
+  workflow_dispatch: {}  # lets you run it manually from the Actions tab
+
+jobs:
+  call-function:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Supabase Edge Function
+        shell: bash
+        run: |
+          set -euo pipefail
+          URL="https://${{ secrets.SUPABASE_PROJECT_REF }}.functions.supabase.co/nightly-sync"
+          echo "POST $URL"
+          curl --fail -sS -X POST "$URL" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "Content-Type: application/json" \
+            --data '{"reason":"github-cron"}'
+          echo "✅ Nightly sync triggered successfully."
