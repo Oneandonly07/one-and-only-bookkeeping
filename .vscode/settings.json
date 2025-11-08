@@ -1,16 +1,5 @@
 {
-  // Auto push after each commit
   "git.postCommitCommand": "push",
-
-  // Automatically fetch and prune remotes
-  "git.autofetch": true,
-  "git.autofetchPeriod": 180,
-  "git.pruneOnFetch": true,
-
-  // Skip confirmation prompts when syncing
-  "git.confirmSync": false,
-
-  // Smart commits (commit directly from source control panel)
   "git.enableSmartCommit": true,
-  "git.suggestSmartCommit": false
+  "git.confirmSync": false
 }
